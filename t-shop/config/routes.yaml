@@ -1,0 +1,13 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+# config/routes.yaml
+# inscription_afficher:
+#     path: /inscription/afficher
+#     controller: App\Controller\RegistrationController::afficherFormulaire
+
+# inscription_traiter:
+#     path: /inscription/traiter
+#     controller: App\Controller\RegistrationController::traiterFormulaire

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h3 class="text-center my-4">Mes Commandes</h3>
+        {% if app.user.commandes %}
+            <div class="row justify-content-md-around p-4">
+                {% for commande in app.user.commandes %}
+                    <div class="col-md-3 px-3">
+                    <div  class="card  mx-0 px-0 my-1 border-secondary shadow ">
+                    <div class="card-header bg-dark text-white text-center"> {{ commande.dateenregistrement|date("d/m/Y à H:i:s")}} </div>
+                    <div class="card-body text-center">
+                        <div class="row justify-content-center">
+                            {% for produit in commande.produits %}
+                                <div class="col-6">
+                                    <img class="img-fluid" src="{{ asset("uploads/images/" ~ produit.photo) }}" alt="">
+                                </div>
+                            {% endfor %}
+                        </div>   
+                        <hr>
+                        <p>Nombre de produit : {{ commande.quantite}} </p>
+                        <p>Prix : {{ commande.montant|number_format(2, '.') }} €</p>
+                    </div>
+                    </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <h4 class="text-cent mt-5">Pas encore passé de commande</h4>
+        {% endif %}
+    
+    
+    </div>
+
+{% endblock %}
